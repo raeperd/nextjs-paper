@@ -1,9 +1,11 @@
 import Header from '../components/Header';
 
-function Index() {
+export default function Index({ siteName }: {siteName: string}) {
   return (
-    <Header />
+    <Header siteName={siteName} />
   )
 }
 
-export default Index
+export async function getStaticProps() {
+  return { props: { siteName: process.env.SITE_NAME } }
+}
