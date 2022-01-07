@@ -31,6 +31,7 @@
     "semi": "off",
     "object-curly-newline": ["error", { "multiline": true }],
     "jsx-a11y/anchor-is-valid": "off",
+    "no-use-before-define": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [
       "warn",
