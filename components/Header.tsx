@@ -1,9 +1,19 @@
-import Head from 'next/head';
+import Link from 'next/link';
 
-export default function Header() {
+type HeaderProps = {
+  siteName: string
+}
+
+export default function Header({ siteName }: HeaderProps) {
   return (
-    <Head>
-      <title> nextjs-paper </title>
-    </Head>
+    <header className="header">
+      <h1 className="logo">
+        <Link href="/">
+          <a className="site-name">{siteName}</a>
+        </Link>
+        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+        <a className="btn-dark" />
+      </h1>
+    </header>
   )
 }
