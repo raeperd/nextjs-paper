@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function Header({ siteName, menus }: HeaderProps) {
+export default function Header({ siteName, menus, socials }: HeaderProps) {
   return (
     <header className="header">
       <h1 className="logo">
@@ -12,21 +12,18 @@ export default function Header({ siteName, menus }: HeaderProps) {
         <a className="btn-dark" />
       </h1>
       <MenuNav menus={menus} />
+      <SocialNav socials={socials} />
     </header>
   )
 }
 
-type HeaderProps = {
+export interface HeaderProps {
   siteName: string,
-  menus: Menu[]
+  menus: MenuProps[],
+  socials: SocialProps[]
 }
 
-type Menu = {
-  name: string,
-  href: string
-}
-
-function MenuNav({ menus }: {menus: Menu[]}) {
+function MenuNav({ menus }: {menus: MenuProps[]}) {
   const router = useRouter()
   return (
     <nav className="menu">
@@ -37,4 +34,32 @@ function MenuNav({ menus }: {menus: Menu[]}) {
       ))}
     </nav>
   )
+}
+
+interface MenuProps {
+  name: string,
+  href: string
+}
+
+function SocialNav({ socials }: {socials: SocialProps[]}) {
+  return (
+    <nav className="social">
+      {socials
+        .filter((social) => social.id)
+        .map((social) => (
+          <a href={`//${social.name}.com/${social.id}`}>
+            <img
+              id={social.name}
+              src={`./${social.name}.svg`}
+              alt={`${social.name}`}
+            />
+          </a>
+        ))}
+    </nav>
+  )
+}
+
+interface SocialProps {
+  name: 'instagram' | 'github' | 'twitter',
+  id?: string
 }
