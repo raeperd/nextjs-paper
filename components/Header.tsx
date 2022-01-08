@@ -29,7 +29,7 @@ function MenuNav({ menus }: {menus: MenuProps[]}) {
     <nav className="menu">
       {menus.map((menu) => (
         <Link href={menu.href}>
-          <a className={router.pathname === menu.href ? 'active' : ''}>{menu.name}</a>
+          <a className={router.pathname === menu.href ? 'active' : ''} id={menu.name}>{menu.name}</a>
         </Link>
       ))}
     </nav>

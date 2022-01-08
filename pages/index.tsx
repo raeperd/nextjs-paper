@@ -1,8 +1,12 @@
 import Header, { HeaderProps } from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function Index({ siteName, menus, socials }: HeaderProps) {
   return (
-    <Header siteName={siteName} menus={menus} socials={socials} />
+    <>
+      <Header siteName={siteName} menus={menus} socials={socials} />
+      <Footer siteName={siteName} />
+    </>
   )
 }
 
