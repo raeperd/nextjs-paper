@@ -2,7 +2,7 @@ import { join } from 'path';
 import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
 
-const ARTICLE_DIRECTORY = join(process.cwd(), 'lib', 'content', 'post')
+const ARTICLE_DIRECTORY = join(process.cwd(), 'lib', 'content', 'article')
 
 export function getAllArticles(): Article[] {
   return readdirSync(ARTICLE_DIRECTORY)
