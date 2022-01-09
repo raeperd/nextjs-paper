@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useState } from 'react';
+import Link from 'next/link';
 import { Article, getAllArticles } from '../lib/article';
 
 const PAGE_SIZE = 3
@@ -14,7 +15,7 @@ export default function Index({ siteName, posts }: IndexProps) {
       </Head>
       {posts
         .slice(pageCurrent * PAGE_SIZE, pageCurrent * PAGE_SIZE + PAGE_SIZE)
-        .map((post) => <ArticlePreview article={post} />)}
+        .map((post) => <ArticlePreview article={post} key={post.slug} />)}
       <nav className="main-nav">
         {pageCurrent > 0 && (
           <button
@@ -41,10 +42,13 @@ export default function Index({ siteName, posts }: IndexProps) {
 
 function ArticlePreview({ article }: {article: Article}) {
   return (
-    // TODO: ADD LINK
-    <article className="post-entry" key={article.slug}>
+    <article className="post-entry">
       <h2>{article.title}</h2>
       <time>{article.date}</time>
+      <Link href={`/articles/${article.slug}`}>
+        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+        <a />
+      </Link>
     </article>
   )
 }
