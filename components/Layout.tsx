@@ -70,8 +70,8 @@ function MenuNav({ menus }: { menus: MenuProps[] }) {
   return (
     <nav className="menu">
       {menus.map((menu) => (
-        <Link href={menu.href}>
-          <a className={router.pathname === menu.href ? 'active' : ''} id={menu.name}>{menu.name}</a>
+        <Link href={menu.href} key={menu.name}>
+          <a className={router.pathname === menu.href ? 'active' : ''}>{menu.name}</a>
         </Link>
       ))}
     </nav>
@@ -83,7 +83,7 @@ function SocialNav({ socials }: { socials: SocialProps[] }) {
     <nav className="social">
       {socials
         .map((social) => (
-          <a href={`//${social.name}.com/${social.id}`}>
+          <a href={`//${social.name}.com/${social.id}`} key={social.name}>
             <img
               id={social.name}
               src={`./${social.name}.svg`}
