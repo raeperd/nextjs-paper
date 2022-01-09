@@ -2,11 +2,11 @@ import Head from 'next/head';
 import { useState } from 'react';
 import { Article, getAllArticles } from '../lib/article';
 
-const PAGE_SIZE = 1
+const PAGE_SIZE = 3
 
 export default function Index({ siteName, posts }: IndexProps) {
   const [pageCurrent, setPageCurrent] = useState(0)
-  const lastPage = Math.floor(posts.length / PAGE_SIZE) - 1
+  const pageLast = posts.length < PAGE_SIZE ? 0 : Math.ceil(posts.length / PAGE_SIZE) - 1
   return (
     <>
       <Head>
@@ -25,7 +25,7 @@ export default function Index({ siteName, posts }: IndexProps) {
             prev_page
           </button>
         )}
-        {pageCurrent !== lastPage && (
+        {pageCurrent !== pageLast && (
         <button
           className="next"
           type="button"
