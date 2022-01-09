@@ -1,5 +1,6 @@
-import { Article, getAllArticleSlugs, findFirstArticleBySlug } from '../../lib/article';
-import markdownToHtml from '../../lib/markdownToHtml';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { Article, findFirstArticleBySlug, getAllArticleSlugs } from '../../lib/article';
 
 // TODO: Add tag link
 export default function ArticlePage({ article }: ArticlePageProps) {
@@ -12,8 +13,9 @@ export default function ArticlePage({ article }: ArticlePageProps) {
         </p>
         <h1>{article.title}</h1>
       </header>
-      {/* eslint-disable-next-line react/no-danger */}
-      <section className="post-content" dangerouslySetInnerHTML={{ __html: article.content }} />
+      <section className="post-content">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.content}</ReactMarkdown>
+      </section>
       <footer className="post-tags">
         {article.tags.map((tag) => (
           <a key={tag}>{tag}</a>
@@ -30,7 +32,6 @@ type ArticlePageProps = {
 export async function getStaticProps({ params }: {params: {slug: string}})
   : Promise<{ props: ArticlePageProps }> {
   const article = findFirstArticleBySlug(params.slug)
-  article.content = await markdownToHtml(article.content)
   return { props: { article } }
 }
 
