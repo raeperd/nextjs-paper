@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { Article, findFirstArticleBySlug, getAllArticleSlugs } from '../../lib/article';
 
 // TODO: Add tag link
@@ -14,7 +15,12 @@ export default function ArticlePage({ article }: ArticlePageProps) {
         <h1>{article.title}</h1>
       </header>
       <section className="post-content">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.content}</ReactMarkdown>
+        <ReactMarkdown
+          rehypePlugins={[rehypeRaw]}
+          remarkPlugins={[remarkGfm]}
+        >
+          {article.content}
+        </ReactMarkdown>
       </section>
       <footer className="post-tags">
         {article.tags.map((tag) => (
