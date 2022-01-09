@@ -291,7 +291,7 @@ img {
     margin-top: 5rem;
 }
 
-.main-nav a {
+.main-nav button {
     font-size: 1.8rem;
     line-height: 5.5rem;
     color: var(--white);
@@ -434,7 +434,7 @@ img {
     }
 }
 
-/* Post content
+/* Article content
  -------------------------------------------------- */
 .post-content {
     font-size: 2.2rem;

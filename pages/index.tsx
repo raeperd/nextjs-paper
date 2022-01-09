@@ -1,13 +1,40 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import { Article, getAllArticles } from '../lib/article';
 
+const PAGE_SIZE = 1
+
 export default function Index({ siteName, posts }: IndexProps) {
+  const [pageCurrent, setPageCurrent] = useState(0)
+  const lastPage = Math.floor(posts.length / PAGE_SIZE) - 1
   return (
     <>
       <Head>
         <title>{siteName}</title>
       </Head>
-      {posts.map((post) => <ArticlePreview article={post} />)}
+      {posts
+        .slice(pageCurrent * PAGE_SIZE, pageCurrent * PAGE_SIZE + PAGE_SIZE)
+        .map((post) => <ArticlePreview article={post} />)}
+      <nav className="main-nav">
+        {pageCurrent > 0 && (
+          <button
+            className="prev"
+            type="button"
+            onClick={() => setPageCurrent(pageCurrent - 1)}
+          >
+            prev_page
+          </button>
+        )}
+        {pageCurrent !== lastPage && (
+        <button
+          className="next"
+          type="button"
+          onClick={() => setPageCurrent(pageCurrent + 1)}
+        >
+          next_page
+        </button>
+        ) }
+      </nav>
     </>
   )
 }
