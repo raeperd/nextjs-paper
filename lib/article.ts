@@ -5,18 +5,35 @@ import matter from 'gray-matter';
 const ARTICLE_DIRECTORY = join(process.cwd(), 'lib', 'content', 'article')
 
 export function getAllArticles(): Article[] {
-  return readdirSync(ARTICLE_DIRECTORY)
-    .filter((file) => !file.startsWith('_'))
-    .map((file) => readArticleSync(file))
+  return getAllArticleFiles()
+    .map((file) => readArticleFile(file))
 }
 
-function readArticleSync(file: string): Article {
+export function getAllArticleSlugs(): string[] {
+  return getAllArticleFiles()
+    .map((file) => file.replace(/\.md$/, ''))
+}
+
+export function findFirstArticleBySlug(slugToFind: string): Article {
+  const slugFound = getAllArticleSlugs().find((slug) => slug === slugToFind)
+  if (!slugFound) {
+    throw new Error(`Given ${slugToFind} is not exists`)
+  }
+  return readArticleFile(`${slugToFind}.md`)
+}
+
+function getAllArticleFiles(): string[] {
+  return readdirSync(ARTICLE_DIRECTORY)
+    .filter((file) => !file.startsWith('_'))
+}
+
+function readArticleFile(file: string): Article {
   const filePath = join(ARTICLE_DIRECTORY, file)
   const fileContent = readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContent)
   return {
     slug: file.replace(/\.md$/, ''),
-    title: data.title,
+    title: data.title ? data.title : file,
     date: data.date
       ? data.date.toDateString()
       : statSync(filePath).birthtime.toDateString(),
@@ -27,7 +44,7 @@ function readArticleSync(file: string): Article {
 
 export interface Article {
   slug: string,
-  title?: string,
+  title: string,
   date: string,
   tags: string[],
   content: string
