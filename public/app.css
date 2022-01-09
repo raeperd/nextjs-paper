@@ -82,6 +82,10 @@ body {
     transition: background 0.4s ease-out;
 }
 
+#__next {
+    flex: 1 1 auto;
+}
+
 body > div > * {
     flex-shrink: 0;
     width: 100%;
