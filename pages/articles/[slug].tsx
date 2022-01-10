@@ -1,10 +1,16 @@
+import Head from 'next/head';
 import { Article, findFirstArticleBySlug, getAllArticleSlugs } from '../../lib/article';
 import ArticleView from '../../components/ArticleView';
 
 // TODO: Add tag link
 export default function ArticlePage({ article }: ArticlePageProps) {
   return (
-    <ArticleView article={article} />
+    <>
+      <Head>
+        <title>{article.title}</title>
+      </Head>
+      <ArticleView article={article} />
+    </>
   )
 }
 
