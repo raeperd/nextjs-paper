@@ -6,18 +6,18 @@ import { Article, getAllArticles } from '../lib/article';
 const PAGE_SIZE = 3
 
 export default function Index({ siteName, posts }: IndexProps) {
-  const [pageCurrent, setPageCurrent] = useState(0)
-  const pageLast = posts.length < PAGE_SIZE ? 0 : Math.ceil(posts.length / PAGE_SIZE) - 1
+  const [pageCurrent, setPageCurrent] = useState(1)
+  const pageLast = Math.ceil(posts.length / PAGE_SIZE)
   return (
     <>
       <Head>
         <title>{siteName}</title>
       </Head>
       {posts
-        .slice(pageCurrent * PAGE_SIZE, pageCurrent * PAGE_SIZE + PAGE_SIZE)
+        .slice((pageCurrent - 1) * PAGE_SIZE, pageCurrent * PAGE_SIZE)
         .map((post) => <ArticlePreview article={post} key={post.slug} />)}
       <nav className="main-nav">
-        {pageCurrent > 0 && (
+        {pageCurrent > 1 && (
           <button
             className="prev"
             type="button"
