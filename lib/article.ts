@@ -60,7 +60,6 @@ const ARTICLE_DIRECTORY = join(PAGE_DIRECTORY, 'article')
 
 function getAllArticleFiles(): string[] {
   return readdirSync(ARTICLE_DIRECTORY)
-    .filter((file) => !file.startsWith('_'))
 }
 
 function readArticle(file: string): Article {
