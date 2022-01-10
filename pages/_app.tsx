@@ -5,16 +5,21 @@ import '../public/katex.min.css'
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { getSiteName } from '../lib/configuration';
+import {
+  getGithubUserId,
+  getInstagramUserId,
+  getSiteName,
+  getTwitterUserId,
+} from '../lib/configuration';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout
       siteName={getSiteName()}
       menus={[{ name: 'About', href: '/about' }]}
-      socials={[{ siteName: 'github', userId: process.env.GITHUB },
-        { siteName: 'twitter', userId: process.env.TWITTER },
-        { siteName: 'instagram', userId: process.env.INSTAGRAM },
+      socials={[{ siteName: 'github', userId: getGithubUserId() },
+        { siteName: 'twitter', userId: getTwitterUserId() },
+        { siteName: 'instagram', userId: getInstagramUserId() },
       ]}
     >
       <Head>
@@ -58,12 +63,6 @@ function Header({ siteName, menus, socials }: HeaderProps) {
   )
 }
 
-interface HeaderProps {
-  siteName: string,
-  menus: MenuProps[],
-  socials: SocialProps[]
-}
-
 function Footer({ siteName }: { siteName: string }) {
   return (
     <footer className="footer">
@@ -105,15 +104,10 @@ function MenuNav({ menus }: { menus: MenuProps[] }) {
   )
 }
 
-interface MenuProps {
-  name: string,
-  href: string
-}
-
 function SocialNav({ socials }: { socials: SocialProps[] }) {
   return (
     <nav className="social">
-      {socials
+      {socials.filter((social) => social.userId !== null)
         .map((social) => (
           <a href={`//${social.siteName}.com/${social.userId}`} key={social.siteName}>
             <img
@@ -127,7 +121,18 @@ function SocialNav({ socials }: { socials: SocialProps[] }) {
   )
 }
 
+interface HeaderProps {
+  siteName: string,
+  menus: MenuProps[],
+  socials: SocialProps[]
+}
+
+interface MenuProps {
+  name: string,
+  href: string
+}
+
 interface SocialProps {
   siteName: 'instagram' | 'github' | 'twitter',
-  userId?: string
+  userId: string | null
 }

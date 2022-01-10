@@ -7,3 +7,18 @@ export function getSiteName(): string {
   return process.env.SITE_NAME
     ? process.env.SITE_NAME : 'Paper'
 }
+
+export function getGithubUserId(): string | null {
+  return process.env.GITHUB
+    ? process.env.GITHUB : null
+}
+
+export function getTwitterUserId(): string | null {
+  return process.env.TWITTER
+    ? process.env.TWITTER : null
+}
+
+export function getInstagramUserId(): string | null {
+  return process.env.INSTAGRAM
+    ? process.env.INSTAGRAM : null
+}
