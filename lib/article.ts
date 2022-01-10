@@ -2,11 +2,9 @@ import { join } from 'path';
 import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
 
-const ARTICLE_DIRECTORY = join(process.cwd(), 'lib', 'content', 'article')
-
 export function getAllArticles(): Article[] {
   return getAllArticleFiles()
-    .map((file) => readArticleFile(file))
+    .map((file) => readArticle(file))
     .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
 }
 
@@ -20,16 +18,31 @@ export function findFirstArticleBySlug(slugToFind: string): Article {
   if (!slugFound) {
     throw new Error(`Given ${slugToFind} is not exists`)
   }
-  return readArticleFile(`${slugToFind}.md`)
+  return readArticle(`${slugToFind}.md`)
 }
+
+export function getAboutPageArticle(): Article {
+  return readPage('about.md')
+}
+
+const PAGE_DIRECTORY = join(process.cwd(), 'lib', 'content')
+const ARTICLE_DIRECTORY = join(PAGE_DIRECTORY, 'article')
 
 function getAllArticleFiles(): string[] {
   return readdirSync(ARTICLE_DIRECTORY)
     .filter((file) => !file.startsWith('_'))
 }
 
-function readArticleFile(file: string): Article {
-  const filePath = join(ARTICLE_DIRECTORY, file)
+function readArticle(file: string): Article {
+  return readFileAsArticle(ARTICLE_DIRECTORY, file)
+}
+
+function readPage(file: string): Article {
+  return readFileAsArticle(PAGE_DIRECTORY, file)
+}
+
+function readFileAsArticle(directory:string, file: string): Article {
+  const filePath = join(directory, file)
   const fileContent = readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContent)
   return {
