@@ -22,3 +22,8 @@ export function getInstagramUserId(): string | null {
   return process.env.INSTAGRAM
     ? process.env.INSTAGRAM : null
 }
+
+export function getDefaultAuthor(): string {
+  return process.env.AUTHOR
+    ? process.env.AUTHOR : 'author'
+}

@@ -1,6 +1,7 @@
 import { join } from 'path';
 import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
+import { getDefaultAuthor } from './configuration';
 
 export function getArticlePreviews(pageNumber: number, pageSize: number): PagedArticlePreview {
   const articles = getAllArticleFiles()
@@ -45,6 +46,7 @@ export interface ArticlePreview {
   slug: string,
   title: string,
   date: string,
+  author: string
 }
 
 export interface PagedArticlePreview {
@@ -81,6 +83,7 @@ function readFileAsArticle(directory:string, file: string): Article {
       ? data.date.toDateString()
       : statSync(filePath).birthtime.toDateString(),
     tags: data.tags ? data.tags : [],
+    author: data.author ? data.author : getDefaultAuthor(),
     content,
   }
 }

@@ -14,7 +14,7 @@ export default function ArticleView({ article }: {article: Article}) {
       <header className="post-title">
         <p>
           <time>{article.date}</time>
-          <span>author</span>
+          <span>{article.author}</span>
         </p>
         <h1>{article.title}</h1>
       </header>
