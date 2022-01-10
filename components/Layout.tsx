@@ -86,7 +86,7 @@ function SocialNav({ socials }: { socials: SocialProps[] }) {
           <a href={`//${social.name}.com/${social.id}`} key={social.name}>
             <img
               id={social.name}
-              src={`./${social.name}.svg`}
+              src={`/${social.name}.svg`}
               alt={`${social.name}`}
             />
           </a>
