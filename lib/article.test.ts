@@ -1,9 +1,11 @@
-import { findFirstArticleBySlug, getAllArticles, getAllArticleSlugs } from './article';
+import { findFirstArticleBySlug, getAllArticleSlugs, getArticlePreviews } from './article';
 
-test('getAllArticles', () => {
-  const articles = getAllArticles()
-  expect(articles).toHaveLength(5)
-  expect(articles[0].title.length).toBeGreaterThanOrEqual(0)
+test('getArticlePreviews', () => {
+  const pageSize = 3
+  const articles = getArticlePreviews(1, pageSize)
+
+  expect(articles.pageSize).toBe(pageSize)
+  expect(articles.articles).toHaveLength(pageSize)
 })
 
 test('getAllArticleSlugs', () => {

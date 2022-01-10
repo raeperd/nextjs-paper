@@ -1,40 +1,50 @@
-import { useRouter } from 'next/router';
-import { Article, getAllArticles, getNumArticles } from '../../lib/article';
+import { ArticlePreview, getArticlePreviews, getNumArticles } from '../../lib/article';
 import ArticleListView from '../../components/ArticleListView';
+import { getPageSize, getSiteName } from '../../lib/configuration';
 
-export default function ArticleListPage({ siteName, articles }: ArticleListPageProps) {
-  const router = useRouter()
-  const { pageNumber } = router.query
+export default function ArticleListPage(
+  { siteName, articles, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
+) {
   return (
     <ArticleListView
       siteName={siteName}
       articles={articles}
-      pageNumber={parseInt(pageNumber as string, 10)}
+      pageNumber={pageNumber}
+      isFirstPage={isFirstPage}
+      isLastPage={isLastPage}
     />
   )
 }
 
 type ArticleListPageProps = {
-      siteName: string,
-  articles: Article[]
+  siteName: string,
+  articles: ArticlePreview[],
+  pageNumber: number,
+  isFirstPage: boolean,
+  isLastPage: boolean
 }
 
 export async function getStaticProps({ params }: {params: {pageNumber: string}})
   : Promise<{ props: ArticleListPageProps }> {
-  const siteName = process.env.SITE_NAME ? process.env.SITE_NAME : 'Paper'
-  const articles = getAllArticles()
-  return { props: { siteName, articles } }
+  const pagedArticles = getArticlePreviews(parseInt(params.pageNumber, 10), getPageSize())
+  return {
+    props: {
+      siteName: getSiteName(),
+      articles: pagedArticles.articles,
+      pageNumber: pagedArticles.pageNumber,
+      isFirstPage: pagedArticles.isFirstPage,
+      isLastPage: pagedArticles.isLastPage,
+    },
+  }
 }
 
 export async function getStaticPaths() {
-  const pageSize = process.env.PAGE_SIZE ? parseInt(process.env.PAGE_SIZE, 10) : 3
-  const numPage = Math.ceil(getNumArticles() / pageSize)
-  const paths = Array(numPage)
-    .fill(0)
-    .map((_, index) => (index + 1).toString())
-    .map((pageNumber) => ({ params: { pageNumber } }))
+  const numPage = Math.ceil(getNumArticles() / getPageSize())
   return {
-    paths,
+    paths: Array(numPage)
+      .fill(0)
+      .map((_, index) => (index + 1))
+      .map((pageNumber) => ({ params: { pageNumber: pageNumber.toString() } })),
     fallback: false,
   }
 }

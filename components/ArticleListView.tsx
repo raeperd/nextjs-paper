@@ -1,24 +1,22 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { Article } from '../lib/article';
+import { ArticlePreview } from '../lib/article';
 
-const PAGE_SIZE = 3
-
-export default function ArticleListView({ siteName, articles, pageNumber }: ArticleListViewProps) {
-  const pageLast = Math.ceil(articles.length / PAGE_SIZE)
+export default function ArticleListView(
+  { siteName, articles, pageNumber, isFirstPage, isLastPage }: ArticleListViewProps,
+) {
   return (
     <>
       <Head>
         <title>{siteName}</title>
       </Head>
       {articles
-        .slice((pageNumber - 1) * PAGE_SIZE, pageNumber * PAGE_SIZE)
-        .map((post) => <ArticlePreview article={post} key={post.slug} />)}
+        .map((article) => <ArticlePreviewItem article={article} key={article.slug} />)}
       <nav className="main-nav">
-        {pageNumber > 1 && (
+        {!isFirstPage && (
           <PrevButton currentPageNumber={pageNumber} />
         )}
-        {pageNumber !== pageLast && (
+        {!isLastPage && (
           <NextButton currentPageNumber={pageNumber} />
         ) }
       </nav>
@@ -26,7 +24,7 @@ export default function ArticleListView({ siteName, articles, pageNumber }: Arti
   )
 }
 
-function ArticlePreview({ article }: {article: Article}) {
+function ArticlePreviewItem({ article }: {article: ArticlePreview}) {
   return (
     <article className="post-entry">
       <h2>{article.title}</h2>
@@ -60,6 +58,8 @@ function NextButton({ currentPageNumber }: {currentPageNumber: number}) {
 
 type ArticleListViewProps = {
   siteName: string,
-  articles: Article[],
-  pageNumber: number
+  articles: ArticlePreview[],
+  pageNumber: number,
+  isFirstPage: boolean,
+  isLastPage: boolean,
 }

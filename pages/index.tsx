@@ -1,16 +1,38 @@
-import { Article, getAllArticles } from '../lib/article';
+import { ArticlePreview, getArticlePreviews } from '../lib/article';
 import ArticleListView from '../components/ArticleListView';
+import { getPageSize, getSiteName } from '../lib/configuration';
 
-export default function Index({ siteName, articles }: IndexProps) {
-  return <ArticleListView siteName={siteName} articles={articles} pageNumber={1} />
+export default function Index(
+  { siteName, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
+) {
+  return (
+    <ArticleListView
+      siteName={siteName}
+      articles={articles}
+      pageNumber={pageNumber}
+      isFirstPage={isFirstPage}
+      isLastPage={isLastPage}
+    />
+  )
 }
 
-type IndexProps = {
+interface IndexProps {
   siteName: string,
-  articles: Article[]
+  articles: ArticlePreview[],
+  pageNumber: number,
+  isFirstPage: boolean,
+  isLastPage: boolean
 }
 
 export async function getStaticProps(): Promise<{props: IndexProps}> {
-  const siteName = process.env.SITE_NAME ? process.env.SITE_NAME : 'Paper'
-  return { props: { siteName, articles: getAllArticles() } }
+  const pagedArticles = getArticlePreviews(1, getPageSize())
+  return {
+    props: {
+      siteName: getSiteName(),
+      articles: pagedArticles.articles,
+      pageNumber: pagedArticles.pageNumber,
+      isFirstPage: pagedArticles.isFirstPage,
+      isLastPage: pagedArticles.isLastPage,
+    },
+  }
 }
