@@ -2,10 +2,21 @@ import { join } from 'path';
 import { readdirSync, readFileSync, statSync } from 'fs';
 import matter from 'gray-matter';
 
-export function getAllArticles(): Article[] {
-  return getAllArticleFiles()
+export function getArticlePreviews(pageNumber: number, pageSize: number): PagedArticlePreview {
+  const articles = getAllArticleFiles()
     .map((file) => readArticle(file))
     .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
+  return {
+    articles: articles.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+    isFirstPage: pageNumber === 1,
+    isLastPage: pageNumber === Math.ceil(articles.length / pageSize),
+    pageNumber,
+    pageSize,
+  }
+}
+
+export function getNumArticles(): number {
+  return getAllArticleFiles().length
 }
 
 export function getAllArticleSlugs(): string[] {
@@ -23,6 +34,25 @@ export function findFirstArticleBySlug(slugToFind: string): Article {
 
 export function getAboutPageArticle(): Article {
   return readPage('about.md')
+}
+
+export interface Article extends ArticlePreview{
+  tags: string[],
+  content: string
+}
+
+export interface ArticlePreview {
+  slug: string,
+  title: string,
+  date: string,
+}
+
+export interface PagedArticlePreview {
+  articles: ArticlePreview[],
+  pageNumber: number,
+  pageSize: number,
+  isFirstPage: boolean,
+  isLastPage: boolean
 }
 
 const PAGE_DIRECTORY = join(process.cwd(), 'lib', 'content')
@@ -54,12 +84,4 @@ function readFileAsArticle(directory:string, file: string): Article {
     tags: data.tags ? data.tags : [],
     content,
   }
-}
-
-export interface Article {
-  slug: string,
-  title: string,
-  date: string,
-  tags: string[],
-  content: string
 }
