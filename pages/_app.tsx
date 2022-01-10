@@ -5,10 +5,18 @@ import '../public/katex.min.css'
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { getSiteName } from '../lib/configuration';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
+    <Layout
+      siteName={getSiteName()}
+      menus={[{ name: 'About', href: '/about' }]}
+      socials={[{ siteName: 'github', userId: process.env.GITHUB },
+        { siteName: 'twitter', userId: process.env.TWITTER },
+        { siteName: 'instagram', userId: process.env.INSTAGRAM },
+      ]}
+    >
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -17,22 +25,21 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-function Layout({ children }: { children: ReactNode }) {
-  const siteName = process.env.SITE_NAME ? process.env.SITE_NAME : 'Paper'
+function Layout({ siteName, menus, socials, children }: LayoutProps) {
   return (
     <>
-      <Header
-        siteName={siteName}
-        menus={[{ name: 'About', href: '/about' }]}
-        socials={[{ name: 'github', id: process.env.GITHUB },
-          { name: 'twitter', id: process.env.TWITTER },
-          { name: 'instagram', id: process.env.INSTAGRAM },
-        ]}
-      />
+      <Header siteName={siteName} menus={menus} socials={socials} />
       <main className="main">{children}</main>
       <Footer siteName={siteName} />
     </>
   )
+}
+
+type LayoutProps = {
+  siteName: string,
+  menus: MenuProps[],
+  socials: SocialProps[],
+  children: ReactNode
 }
 
 function Header({ siteName, menus, socials }: HeaderProps) {
@@ -108,11 +115,11 @@ function SocialNav({ socials }: { socials: SocialProps[] }) {
     <nav className="social">
       {socials
         .map((social) => (
-          <a href={`//${social.name}.com/${social.id}`} key={social.name}>
+          <a href={`//${social.siteName}.com/${social.userId}`} key={social.siteName}>
             <img
-              id={social.name}
-              src={`/${social.name}.svg`}
-              alt={`${social.name}`}
+              id={social.siteName}
+              src={`/${social.siteName}.svg`}
+              alt={`${social.siteName}`}
             />
           </a>
         ))}
@@ -121,6 +128,6 @@ function SocialNav({ socials }: { socials: SocialProps[] }) {
 }
 
 interface SocialProps {
-  name: 'instagram' | 'github' | 'twitter',
-  id?: string
+  siteName: 'instagram' | 'github' | 'twitter',
+  userId?: string
 }
