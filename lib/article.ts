@@ -7,6 +7,7 @@ const ARTICLE_DIRECTORY = join(process.cwd(), 'lib', 'content', 'article')
 export function getAllArticles(): Article[] {
   return getAllArticleFiles()
     .map((file) => readArticleFile(file))
+    .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
 }
 
 export function getAllArticleSlugs(): string[] {
