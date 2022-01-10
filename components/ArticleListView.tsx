@@ -10,15 +10,11 @@ export default function ArticleListView(
       <Head>
         <title>{siteName}</title>
       </Head>
-      {articles
-        .map((article) => <ArticlePreviewItem article={article} key={article.slug} />)}
+      {articles.map((article) => (
+        <ArticlePreviewItem article={article} key={article.slug} />))}
       <nav className="main-nav">
-        {!isFirstPage && (
-          <PrevButton currentPageNumber={pageNumber} />
-        )}
-        {!isLastPage && (
-          <NextButton currentPageNumber={pageNumber} />
-        ) }
+        {!isFirstPage && (<PrevButton currentPageNumber={pageNumber} />)}
+        {!isLastPage && (<NextButton currentPageNumber={pageNumber} />)}
       </nav>
     </>
   )
