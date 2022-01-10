@@ -291,7 +291,7 @@ img {
     margin-top: 5rem;
 }
 
-.main-nav button {
+.main-nav a {
     font-size: 1.8rem;
     line-height: 5.5rem;
     color: var(--white);

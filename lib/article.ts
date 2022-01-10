@@ -25,6 +25,10 @@ export function getAboutPageArticle(): Article {
   return readPage('about.md')
 }
 
+export function getNumArticles(): number {
+  return getAllArticleFiles().length
+}
+
 const PAGE_DIRECTORY = join(process.cwd(), 'lib', 'content')
 const ARTICLE_DIRECTORY = join(PAGE_DIRECTORY, 'article')
 
