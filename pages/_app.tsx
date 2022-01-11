@@ -2,10 +2,11 @@ import { AppProps } from 'next/app'
 import Head from 'next/head';
 import '../public/app.css'
 import '../public/katex.min.css'
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { useDarkMode } from 'usehooks-ts';
 import { getSiteName } from '../lib/configuration';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -50,8 +51,7 @@ function Header({ siteName, menus, socials }: HeaderProps) {
         <Link href="/">
           <a className="site-name">{siteName}</a>
         </Link>
-        {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-        <a className="btn-dark" />
+        <DarkModeToggleButton />
       </h1>
       <MenuNav menus={menus} />
       <SocialNav socials={socials} />
@@ -84,6 +84,28 @@ function Footer({ siteName }: { siteName: string }) {
         </a>
       </p>
     </footer>
+  )
+}
+
+function DarkModeToggleButton() {
+  const { isDarkMode, toggle } = useDarkMode()
+
+  useEffect(() => {
+    const body = document.body.classList
+    if (isDarkMode) {
+      body.add('dark')
+    } else {
+      body.remove('dark')
+    }
+  }, [isDarkMode])
+
+  return (
+    <button
+      aria-label="darkMode-toggle-button"
+      type="button"
+      className="btn-dark"
+      onClick={toggle}
+    />
   )
 }
 

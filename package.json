@@ -26,7 +26,8 @@
     "remark-gfm": "^3.0.1",
     "remark-html": "13.0.1",
     "remark-math": "^5.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "usehooks-ts": "^2.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
