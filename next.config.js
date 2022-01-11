@@ -4,4 +4,8 @@ const name = 'nextjs-paper'
 module.exports = {
   assetPrefix: isProduction ? `/${name}/` : '',
   basePath: isProduction ? `/${name}` : '',
+  images: {
+    loader: 'akamai',
+    path: '',
+  },
 }

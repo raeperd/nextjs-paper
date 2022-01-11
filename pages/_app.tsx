@@ -5,6 +5,7 @@ import '../public/katex.min.css'
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { getSiteName } from '../lib/configuration';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -105,10 +106,12 @@ function SocialNav({ socials }: { socials: SocialProps[] }) {
       {socials.filter((social) => social.userId !== 'undefined')
         .map((social) => (
           <a href={`//${social.siteName}.com/${social.userId}`} key={social.siteName}>
-            <img
+            <Image
               id={social.siteName}
               src={`/${social.siteName}.svg`}
               alt={`${social.siteName}`}
+              width={500}
+              height={500}
             />
           </a>
         ))}
