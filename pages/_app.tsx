@@ -102,7 +102,7 @@ function MenuNav({ menus }: { menus: MenuProps[] }) {
 function SocialNav({ socials }: { socials: SocialProps[] }) {
   return (
     <nav className="social">
-      {socials.filter((social) => !social.userId)
+      {socials.filter((social) => social.userId !== 'undefined')
         .map((social) => (
           <a href={`//${social.siteName}.com/${social.userId}`} key={social.siteName}>
             <img
