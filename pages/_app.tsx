@@ -5,21 +5,16 @@ import '../public/katex.min.css'
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  getGithubUserId,
-  getInstagramUserId,
-  getSiteName,
-  getTwitterUserId,
-} from '../lib/configuration';
+import { getSiteName } from '../lib/configuration';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout
       siteName={getSiteName()}
       menus={[{ name: 'About', href: '/about' }]}
-      socials={[{ siteName: 'github', userId: getGithubUserId() },
-        { siteName: 'twitter', userId: getTwitterUserId() },
-        { siteName: 'instagram', userId: getInstagramUserId() },
+      socials={[{ siteName: 'github', userId: process.env.GITHUB },
+        { siteName: 'twitter', userId: process.env.TWITTER },
+        { siteName: 'instagram', userId: process.env.INSTAGRAM },
       ]}
     >
       <Head>
@@ -107,7 +102,7 @@ function MenuNav({ menus }: { menus: MenuProps[] }) {
 function SocialNav({ socials }: { socials: SocialProps[] }) {
   return (
     <nav className="social">
-      {socials.filter((social) => social.userId !== null)
+      {socials.filter((social) => !social.userId)
         .map((social) => (
           <a href={`//${social.siteName}.com/${social.userId}`} key={social.siteName}>
             <img
@@ -134,5 +129,5 @@ interface MenuProps {
 
 interface SocialProps {
   siteName: 'instagram' | 'github' | 'twitter',
-  userId: string | null
+  userId?: string
 }
