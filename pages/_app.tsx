@@ -5,9 +5,11 @@ import '../public/katex.min.css'
 import { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import { useDarkMode } from 'usehooks-ts';
 import { getSiteName } from '../lib/configuration';
+import Github from '../public/github.svg'
+import Twitter from '../public/twitter.svg'
+import Instagram from '../public/instagram.svg'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -123,18 +125,18 @@ function MenuNav({ menus }: { menus: MenuProps[] }) {
 }
 
 function SocialNav({ socials }: { socials: SocialProps[] }) {
+  const siteNameToSvg = {
+    github: <Github />,
+    twitter: <Twitter />,
+    instagram: <Instagram />,
+  }
+
   return (
     <nav className="social">
       {socials.filter((social) => social.userId !== 'undefined')
         .map((social) => (
           <a href={`//${social.siteName}.com/${social.userId}`} key={social.siteName}>
-            <Image
-              id={social.siteName}
-              src={`/${social.siteName}.svg`}
-              alt={`${social.siteName}`}
-              width={500}
-              height={500}
-            />
+            {siteNameToSvg[social.siteName]}
           </a>
         ))}
     </nav>
