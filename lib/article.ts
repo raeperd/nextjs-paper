@@ -43,7 +43,24 @@ export function getAllTags(): string[] {
     .flatMap((article) => article.tags)
 }
 
-export function getAllArticlesByTag(tagToFind: string): ArticlePreview[] {
+export function getArticlePreviewsByTag(tagToFind: string, pageNumber: number, pageSize: number)
+  : PagedArticlePreview {
+  const articles = getAllArticlesByTag(tagToFind)
+    .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime())
+  return {
+    articles: articles.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+    isFirstPage: pageNumber === 1,
+    isLastPage: pageNumber === Math.ceil(articles.length / pageSize),
+    pageNumber,
+    pageSize,
+  }
+}
+
+export function getNumArticlesByTag(tag: string): number {
+  return getAllArticlesByTag(tag).length
+}
+
+function getAllArticlesByTag(tagToFind: string): ArticlePreview[] {
   return getAllArticleFiles()
     .map((file) => readArticle(file))
     .filter((article) => article.tags.findIndex((tag) => tag === tagToFind) > -1)
