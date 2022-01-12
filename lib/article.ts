@@ -37,6 +37,18 @@ export function getAboutPageArticle(): Article {
   return readPage('about.md')
 }
 
+export function getAllTags(): string[] {
+  return getAllArticleFiles()
+    .map((file) => readArticle(file))
+    .flatMap((article) => article.tags)
+}
+
+export function getAllArticlesByTag(tagToFind: string): ArticlePreview[] {
+  return getAllArticleFiles()
+    .map((file) => readArticle(file))
+    .filter((article) => article.tags.findIndex((tag) => tag === tagToFind) > -1)
+}
+
 export interface Article extends ArticlePreview{
   tags: string[],
   content: string

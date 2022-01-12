@@ -3,13 +3,14 @@ import Link from 'next/link';
 import { ArticlePreview } from '../lib/article';
 
 export default function ArticleListView(
-  { siteName, articles, pageNumber, isFirstPage, isLastPage }: ArticleListViewProps,
+  { siteName, mainTitle, articles, pageNumber, isFirstPage, isLastPage }: ArticleListViewProps,
 ) {
   return (
     <>
       <Head>
         <title>{siteName}</title>
       </Head>
+      {mainTitle && <h1 className="main-title">{mainTitle}</h1>}
       {articles.map((article) => (
         <ArticlePreviewItem article={article} key={article.slug} />))}
       <nav className="main-nav">
@@ -54,6 +55,7 @@ function NextButton({ currentPageNumber }: {currentPageNumber: number}) {
 
 type ArticleListViewProps = {
   siteName: string,
+  mainTitle?: string,
   articles: ArticlePreview[],
   pageNumber: number,
   isFirstPage: boolean,
