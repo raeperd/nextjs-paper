@@ -3,7 +3,6 @@ import { Article, findFirstArticleBySlug, getAllArticleSlugs } from '../../lib/a
 import ArticleView from '../../components/ArticleView';
 import { getDisqusShortname, getServerURL } from '../../lib/configuration';
 
-// TODO: Add tag link
 export default function ArticlePage({ article, disqusShortname, serverURL }: ArticlePageProps) {
   return (
     <>

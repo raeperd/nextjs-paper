@@ -6,9 +6,9 @@ import remarkMath from 'remark-math';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { DiscussionEmbed } from 'disqus-react';
+import Link from 'next/link';
 import { Article } from '../lib/article'
 
-// TODO: Add tag link
 export default function ArticleView({ article, disqusShortname, currentURL }: ArticleViewProps) {
   return (
     <article className="post-single">
@@ -30,7 +30,7 @@ export default function ArticleView({ article, disqusShortname, currentURL }: Ar
       </section>
       <footer className="post-tags">
         {article.tags.map((tag) => (
-          <a key={tag}>{tag}</a>
+          <Link key={tag} href={`/tags/${tag}`}>{tag}</Link>
         ))}
       </footer>
       {disqusShortname && <div id="disqus_thread" className="post-comments" />}
