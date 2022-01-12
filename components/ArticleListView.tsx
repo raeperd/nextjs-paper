@@ -27,7 +27,7 @@ function ArticlePreviewItem({ article }: {article: ArticlePreview}) {
     <article className="post-entry">
       <h2>{article.title}</h2>
       <time>{article.date}</time>
-      <Link href={`/articles/${article.slug}`}>
+      <Link href={`/post/${article.slug}`}>
         {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
         <a />
       </Link>

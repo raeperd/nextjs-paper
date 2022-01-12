@@ -12,7 +12,7 @@ export default function ArticlePage({ article, disqusShortname, serverURL }: Art
       <ArticleView
         article={article}
         disqusShortname={disqusShortname}
-        currentURL={`${serverURL}/articles/${article.slug}`}
+        currentURL={`${serverURL}/post/${article.slug}`}
       />
     </>
   )
