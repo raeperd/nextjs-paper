@@ -12,7 +12,7 @@ export default function TagPageListPage(
 ) {
   return (
     <ArticleListView
-      siteName={tag}
+      title={tag}
       mainTitle={tag}
       basePath={`/tags/${tag}`}
       articles={articles}

@@ -3,11 +3,11 @@ import ArticleListView from '../components/ArticleListView';
 import { getPageSize, getSiteName } from '../lib/configuration';
 
 export default function Index(
-  { siteName, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
+  { title, articles, pageNumber, isLastPage, isFirstPage }: IndexProps,
 ) {
   return (
     <ArticleListView
-      siteName={siteName}
+      title={title}
       articles={articles}
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
@@ -17,7 +17,7 @@ export default function Index(
 }
 
 interface IndexProps {
-  siteName: string,
+  title: string,
   articles: ArticlePreview[],
   pageNumber: number,
   isFirstPage: boolean,
@@ -28,7 +28,7 @@ export async function getStaticProps(): Promise<{props: IndexProps}> {
   const pagedArticles = getArticlePreviews(1, getPageSize())
   return {
     props: {
-      siteName: getSiteName(),
+      title: getSiteName(),
       articles: pagedArticles.articles,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,

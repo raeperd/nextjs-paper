@@ -3,13 +3,13 @@ import Link from 'next/link';
 import { ArticlePreview } from '../lib/article';
 
 export default function ArticleListView(
-  { siteName, mainTitle, articles, basePath, pageNumber, isFirstPage, isLastPage }
+  { title, mainTitle, articles, basePath, pageNumber, isFirstPage, isLastPage }
     : ArticleListViewProps,
 ) {
   return (
     <>
       <Head>
-        <title>{siteName}</title>
+        <title>{title}</title>
       </Head>
       {mainTitle && <h1 className="main-title">{mainTitle}</h1>}
       {articles.map((article) => (
@@ -60,7 +60,7 @@ type PagingButtonProps = {
 }
 
 type ArticleListViewProps = {
-  siteName: string,
+  title: string,
   basePath?: string,
   mainTitle?: string,
   articles: ArticlePreview[],

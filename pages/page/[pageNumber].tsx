@@ -3,11 +3,11 @@ import ArticleListView from '../../components/ArticleListView';
 import { getPageSize, getSiteName } from '../../lib/configuration';
 
 export default function ArticleListPage(
-  { siteName, articles, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
+  { title, articles, pageNumber, isFirstPage, isLastPage }: ArticleListPageProps,
 ) {
   return (
     <ArticleListView
-      siteName={siteName}
+      title={title}
       articles={articles}
       pageNumber={pageNumber}
       isFirstPage={isFirstPage}
@@ -17,7 +17,7 @@ export default function ArticleListPage(
 }
 
 type ArticleListPageProps = {
-  siteName: string,
+  title: string,
   articles: ArticlePreview[],
   pageNumber: number,
   isFirstPage: boolean,
@@ -29,7 +29,7 @@ export async function getStaticProps({ params }: {params: {pageNumber: string}})
   const pagedArticles = getArticlePreviews(parseInt(params.pageNumber, 10), getPageSize())
   return {
     props: {
-      siteName: getSiteName(),
+      title: getSiteName(),
       articles: pagedArticles.articles,
       pageNumber: pagedArticles.pageNumber,
       isFirstPage: pagedArticles.isFirstPage,
