@@ -39,8 +39,7 @@ function PrevButton({ basePath, currentPageNumber }: PagingButtonProps) {
   const prevPageLink = currentPageNumber === 2 ? `${basePath}/` : `${basePath}/page/${currentPageNumber - 1}`
   return (
     <Link href={prevPageLink}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-      <a className="prev">prev_page</a>
+      <a className="prev">&lt; Prev Page</a>
     </Link>
   )
 }
@@ -48,8 +47,7 @@ function PrevButton({ basePath, currentPageNumber }: PagingButtonProps) {
 function NextButton({ basePath, currentPageNumber }: PagingButtonProps) {
   return (
     <Link href={`${basePath}/page/${currentPageNumber + 1}`}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-      <a className="next">next_page</a>
+      <a className="next">Next Page &gt;</a>
     </Link>
   )
 }
