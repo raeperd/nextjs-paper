@@ -1,0 +1,116 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="initial-scale=1.0, width=device-width"/><title>Markdown Syntax Guide</title><meta name="next-head-count" content="3"/><link rel="preload" href="/nextjs-paper/_next/static/css/631e9ace7ba59184.css" as="style"/><link rel="stylesheet" href="/nextjs-paper/_next/static/css/631e9ace7ba59184.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/nextjs-paper/_next/static/chunks/polyfills-5cd94c89d3acac5f.js"></script><script src="/nextjs-paper/_next/static/chunks/webpack-6f20ab08cdea27b8.js" defer=""></script><script src="/nextjs-paper/_next/static/chunks/framework-91d7f78b5b4003c8.js" defer=""></script><script src="/nextjs-paper/_next/static/chunks/main-f6368148de1ae8f4.js" defer=""></script><script src="/nextjs-paper/_next/static/chunks/pages/_app-d1284dd50d48ffd3.js" defer=""></script><script src="/nextjs-paper/_next/static/chunks/175675d1-e67822bbbe79cc09.js" defer=""></script><script src="/nextjs-paper/_next/static/chunks/427-815b6156cb79e6d2.js" defer=""></script><script src="/nextjs-paper/_next/static/chunks/pages/post/%5Bslug%5D-b212a9f0ff2d40ff.js" defer=""></script><script src="/nextjs-paper/_next/static/b9zFDvMvD2fF7daYtjaEK/_buildManifest.js" defer=""></script><script src="/nextjs-paper/_next/static/b9zFDvMvD2fF7daYtjaEK/_ssgManifest.js" defer=""></script><script src="/nextjs-paper/_next/static/b9zFDvMvD2fF7daYtjaEK/_middlewareManifest.js" defer=""></script></head><body data-menu="true"><div id="__next" data-reactroot=""><header class="header"><h1 class="logo"><a class="site-name" href="/nextjs-paper">Paper</a><button aria-label="darkMode-toggle-button" type="button" class="btn-dark"></button></h1><nav class="menu"><a class="" href="/nextjs-paper/about">About</a></nav><nav class="social"><a href="//github.com/raeperd"><svg viewBox="-0.8 -1 17.6 17.6" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a><a href="//twitter.com/raeperd117"><svg viewBox="0.9 0.5 22.8 22.8" xmlns="http://www.w3.org/2000/svg"><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733a4.67 4.67 0 0 0 2.048-2.578 9.3 9.3 0 0 1-2.958 1.13 4.66 4.66 0 0 0-7.938 4.25 13.229 13.229 0 0 1-9.602-4.868c-.4.69-.63 1.49-.63 2.342A4.66 4.66 0 0 0 3.96 9.824a4.647 4.647 0 0 1-2.11-.583v.06a4.66 4.66 0 0 0 3.737 4.568 4.692 4.692 0 0 1-2.104.08 4.661 4.661 0 0 0 4.352 3.234 9.348 9.348 0 0 1-5.786 1.995 9.5 9.5 0 0 1-1.112-.065 13.175 13.175 0 0 0 7.14 2.093c8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602a9.47 9.47 0 0 0 2.323-2.41z"></path></svg></a><a href="//instagram.com/raeperd"><svg viewBox="-1.5 -3 53 53" xmlns="http://www.w3.org/2000/svg"><path d="M25 1c-6.52 0-7.34.03-9.9.14-2.55.12-4.3.53-5.82 1.12a11.76 11.76 0 0 0-4.25 2.77 11.76 11.76 0 0 0-2.77 4.25c-.6 1.52-1 3.27-1.12 5.82C1.03 17.66 1 18.48 1 25c0 6.5.03 7.33.14 9.88.12 2.56.53 4.3 1.12 5.83a11.76 11.76 0 0 0 2.77 4.25 11.76 11.76 0 0 0 4.25 2.77c1.52.59 3.27 1 5.82 1.11 2.56.12 3.38.14 9.9.14 6.5 0 7.33-.02 9.88-.14 2.56-.12 4.3-.52 5.83-1.11a11.76 11.76 0 0 0 4.25-2.77 11.76 11.76 0 0 0 2.77-4.25c.59-1.53 1-3.27 1.11-5.83.12-2.55.14-3.37.14-9.89 0-6.51-.02-7.33-.14-9.89-.12-2.55-.52-4.3-1.11-5.82a11.76 11.76 0 0 0-2.77-4.25 11.76 11.76 0 0 0-4.25-2.77c-1.53-.6-3.27-1-5.83-1.12A170.2 170.2 0 0 0 25 1zm0 4.32c6.4 0 7.16.03 9.69.14 2.34.11 3.6.5 4.45.83 1.12.43 1.92.95 2.76 1.8a7.43 7.43 0 0 1 1.8 2.75c.32.85.72 2.12.82 4.46.12 2.53.14 3.29.14 9.7 0 6.4-.02 7.16-.14 9.69-.1 2.34-.5 3.6-.82 4.45a7.43 7.43 0 0 1-1.8 2.76 7.43 7.43 0 0 1-2.76 1.8c-.84.32-2.11.72-4.45.82-2.53.12-3.3.14-9.7.14-6.4 0-7.16-.02-9.7-.14-2.33-.1-3.6-.5-4.45-.82a7.43 7.43 0 0 1-2.76-1.8 7.43 7.43 0 0 1-1.8-2.76c-.32-.84-.71-2.11-.82-4.45a166.5 166.5 0 0 1-.14-9.7c0-6.4.03-7.16.14-9.7.11-2.33.5-3.6.83-4.45a7.43 7.43 0 0 1 1.8-2.76 7.43 7.43 0 0 1 2.75-1.8c.85-.32 2.12-.71 4.46-.82 2.53-.11 3.29-.14 9.7-.14zm0 7.35a12.32 12.32 0 1 0 0 24.64 12.32 12.32 0 0 0 0-24.64zM25 33a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm15.68-20.8a2.88 2.88 0 1 0-5.76 0 2.88 2.88 0 0 0 5.76 0z"></path></svg></a></nav></header><main class="main"><article class="post-single"><header class="post-title"><p><time>Mon Mar 11 2019</time><span>lee.so</span></p><h1>Markdown Syntax Guide</h1></header><section class="post-content"><p>This article offers a sample of basic Markdown syntax that can be used in NextJS-Paper content files, also it shows whether basic HTML elements are decorated with CSS in a <code node="[object Object]">/public/app.css</code></p>
+<!-- -->
+<h2>Headings</h2>
+<p>The following HTML <code node="[object Object]">&lt;h1&gt;</code>—<code node="[object Object]">&lt;h6&gt;</code> elements represent six levels of section headings. <code node="[object Object]">&lt;h1&gt;</code> is the highest section level while <code node="[object Object]">&lt;h6&gt;</code> is the lowest.</p>
+<h1>H1</h1>
+<h2>H2</h2>
+<h3>H3</h3>
+<h4>H4</h4>
+<h5>H5</h5>
+<h6>H6</h6>
+<h2>Paragraph</h2>
+<p>Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.</p>
+<p>Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.</p>
+<h2>Blockquotes</h2>
+<p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a <code node="[object Object]">footer</code> or <code node="[object Object]">cite</code> element, and optionally with in-line changes such as annotations and abbreviations.</p>
+<h4>Blockquote without attribution</h4>
+<blockquote>
+<p>Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+<strong>Note</strong> that you can use <em>Markdown syntax</em> within a blockquote.</p>
+</blockquote>
+<h4>Blockquote with attribution</h4>
+<blockquote>
+<p>Don&#x27;t communicate by sharing memory, share memory by communicating.<br/>
+— <cite>Rob Pike<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></cite></p>
+</blockquote>
+<h2>Tables</h2>
+<p>Tables aren&#x27;t part of the core Markdown spec, but NextJS-paper supports supports them out-of-the-box.<br/>
+This feature is supported by <a href="https://github.com/remarkjs/remark-gfm">remarkjs/remark-gfm</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Age</th></tr></thead><tbody><tr><td>Bob</td><td>27</td></tr><tr><td>Alice</td><td>23</td></tr></tbody></table>
+<h4>Inline Markdown within tables</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Italics</th><th>Bold</th><th>Code</th></tr></thead><tbody><tr><td><em>italics</em></td><td><strong>bold</strong></td><td><code node="[object Object]">code</code></td></tr></tbody></table>
+<h2>Code Blocks</h2>
+<h4>Code block with backticks</h4>
+<pre><div node="[object Object]" style="color:#d4d4d4;font-size:13px;text-shadow:none;font-family:Menlo, Monaco, Consolas, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Courier New&quot;, monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;background:#1e1e1e"><code class="language-html" style="color:#d4d4d4;font-size:13px;text-shadow:none;font-family:Menlo, Monaco, Consolas, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, &quot;Courier New&quot;, monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token" style="color:#d4d4d4">&lt;!</span><span class="token" style="color:#569CD6">doctype</span><span class="token"> </span><span class="token" style="color:#9cdcfe">html</span><span class="token" style="color:#d4d4d4">&gt;</span><span>
+</span><span></span><span class="token" style="color:#808080">&lt;</span><span class="token" style="color:#569cd6">html</span><span class="token" style="color:#569cd6"> </span><span class="token" style="color:#9cdcfe">lang</span><span class="token" style="color:#d4d4d4">=</span><span class="token" style="color:#ce9178">&quot;</span><span class="token" style="color:#ce9178">en</span><span class="token" style="color:#ce9178">&quot;</span><span class="token" style="color:#808080">&gt;</span><span>
+</span><span></span><span class="token" style="color:#808080">&lt;</span><span class="token" style="color:#569cd6">head</span><span class="token" style="color:#808080">&gt;</span><span>
+</span><span>  </span><span class="token" style="color:#808080">&lt;</span><span class="token" style="color:#569cd6">meta</span><span class="token" style="color:#569cd6"> </span><span class="token" style="color:#9cdcfe">charset</span><span class="token" style="color:#d4d4d4">=</span><span class="token" style="color:#ce9178">&quot;</span><span class="token" style="color:#ce9178">utf-8</span><span class="token" style="color:#ce9178">&quot;</span><span class="token" style="color:#808080">&gt;</span><span>
+</span><span>  </span><span class="token" style="color:#808080">&lt;</span><span class="token" style="color:#569cd6">title</span><span class="token" style="color:#808080">&gt;</span><span>Example HTML5 Document</span><span class="token" style="color:#808080">&lt;/</span><span class="token" style="color:#569cd6">title</span><span class="token" style="color:#808080">&gt;</span><span>
+</span><span></span><span class="token" style="color:#808080">&lt;/</span><span class="token" style="color:#569cd6">head</span><span class="token" style="color:#808080">&gt;</span><span>
+</span><span></span><span class="token" style="color:#808080">&lt;</span><span class="token" style="color:#569cd6">body</span><span class="token" style="color:#808080">&gt;</span><span>
+</span><span>  </span><span class="token" style="color:#808080">&lt;</span><span class="token" style="color:#569cd6">p</span><span class="token" style="color:#808080">&gt;</span><span>Test</span><span class="token" style="color:#808080">&lt;/</span><span class="token" style="color:#569cd6">p</span><span class="token" style="color:#808080">&gt;</span><span>
+</span><span></span><span class="token" style="color:#808080">&lt;/</span><span class="token" style="color:#569cd6">body</span><span class="token" style="color:#808080">&gt;</span><span>
+</span><span></span><span class="token" style="color:#808080">&lt;/</span><span class="token" style="color:#569cd6">html</span><span class="token" style="color:#808080">&gt;</span></code></div></pre>
+<p>This feature is supported by <a href="https://github.com/react-syntax-highlighter/react-syntax-highlighter">react-syntax-highlighter</a></p>
+<h4>Ordered List</h4>
+<ol>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+</ol>
+<h4>Unordered List</h4>
+<ul>
+<li>List item</li>
+<li>Another item</li>
+<li>And another item</li>
+</ul>
+<h4>Nested list</h4>
+<ul>
+<li>Fruit
+<ul>
+<li>Apple</li>
+<li>Orange</li>
+<li>Banana</li>
+</ul>
+</li>
+<li>Dairy
+<ul>
+<li>Milk</li>
+<li>Cheese</li>
+</ul>
+</li>
+</ul>
+<h2>Other Elements — abbr, sub, sup, kbd, mark</h2>
+<p><abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.</p>
+<p>H<sub>2</sub>O</p>
+<p>X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup></p>
+<p>Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.</p>
+<p>Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr/>
+<ol>
+<li id="fn1" role="doc-endnote">The above quote is excerpted from Rob Pike&#x27;s <a href="https://www.youtube.com/watch?v=PAAkCSZUG1c">talk</a> during Gopherfest, November 18, 2015.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></li>
+</ol>
+</section></section><footer class="post-tags"><a href="/nextjs-paper/tags/markdown">markdown</a><a href="/nextjs-paper/tags/css">css</a><a href="/nextjs-paper/tags/html">html</a></footer><div id="disqus_thread" class="post-comments"></div><div id="disqus_thread"></div></article></main><footer class="footer"><p>©<!-- -->2022<!-- --> <a href="/nextjs-paper">Paper</a></p><p>Powered by<!-- --> <a href="https://nextjs.org/" rel="noopener noreferrer" target="_blank">NextJS</a></p><p><a href="https://github.com/raeperd/nextjs-paper" rel="noopener noreferrer" target="_blank"> <!-- -->Paper</a></p></footer></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"article":{"slug":"markdown-syntax","title":"Markdown Syntax Guide","date":"Mon Mar 11 2019","tags":["markdown","css","html"],"author":"lee.so","content":"\nThis article offers a sample of basic Markdown syntax that can be used in NextJS-Paper content files, also it shows whether basic HTML elements are decorated with CSS in a `/public/app.css`\n\u003c!--more--\u003e\n\n## Headings\n\nThe following HTML `\u003ch1\u003e`—`\u003ch6\u003e` elements represent six levels of section headings. `\u003ch1\u003e` is the highest section level while `\u003ch6\u003e` is the lowest.\n\n# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n\n## Paragraph\n\nXerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.\n\nItatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.\n\n## Blockquotes\n\nThe blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.\n\n#### Blockquote without attribution\n\n\u003e Tiam, ad mint andaepu dandae nostion secatur sequo quae.\n\u003e **Note** that you can use *Markdown syntax* within a blockquote.\n\n#### Blockquote with attribution\n\n\u003e Don't communicate by sharing memory, share memory by communicating.\u003cbr\u003e\n\u003e — \u003ccite\u003eRob Pike[^1]\u003c/cite\u003e\n\n[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.\n\n## Tables\n\nTables aren't part of the core Markdown spec, but NextJS-paper supports supports them out-of-the-box.  \nThis feature is supported by [remarkjs/remark-gfm](https://github.com/remarkjs/remark-gfm)\n\n| Name  | Age | \n| ----- | --- |\n| Bob   |  27 |\n| Alice |  23 | \n\n#### Inline Markdown within tables\n\n| Italics   | Bold     | Code   |\n| --------  | -------- | ------ |\n| *italics* | **bold** | `code` |\n\n## Code Blocks\n\n#### Code block with backticks\n\n```html\n\u003c!doctype html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n  \u003cmeta charset=\"utf-8\"\u003e\n  \u003ctitle\u003eExample HTML5 Document\u003c/title\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n  \u003cp\u003eTest\u003c/p\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n```\n\nThis feature is supported by [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)\n\n#### Ordered List\n\n1. First item\n2. Second item\n3. Third item\n\n#### Unordered List\n\n* List item\n* Another item\n* And another item\n\n#### Nested list\n\n* Fruit\n  * Apple\n  * Orange\n  * Banana\n* Dairy\n  * Milk\n  * Cheese\n\n## Other Elements — abbr, sub, sup, kbd, mark\n\n\u003cabbr title=\"Graphics Interchange Format\"\u003eGIF\u003c/abbr\u003e is a bitmap image format.\n\nH\u003csub\u003e2\u003c/sub\u003eO\n\nX\u003csup\u003en\u003c/sup\u003e + Y\u003csup\u003en\u003c/sup\u003e = Z\u003csup\u003en\u003c/sup\u003e\n\nPress \u003ckbd\u003e\u003ckbd\u003eCTRL\u003c/kbd\u003e+\u003ckbd\u003eALT\u003c/kbd\u003e+\u003ckbd\u003eDelete\u003c/kbd\u003e\u003c/kbd\u003e to end the session.\n\nMost \u003cmark\u003esalamanders\u003c/mark\u003e are nocturnal, and hunt for insects, worms, and other small creatures.\n"},"disqusShortname":"nextjs-paper","serverURL":"https://raeperd.github.io/nextjs-paper"},"__N_SSG":true},"page":"/post/[slug]","query":{"slug":"markdown-syntax"},"buildId":"b9zFDvMvD2fF7daYtjaEK","assetPrefix":"/nextjs-paper","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
