@@ -1,25 +1,31 @@
 ---
 title: About
-description : Hugo, the world's fastest framework for building websites
-date : 2019-02-28
-aliases : [about-us, about-hugo, contact]
-author : lee.so
+date : 2022-01-13
 ---
+# NextJS
+To build a complete web application with React from scratch, there are many important details you need to consider:
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+- Code has to be bundled using a bundler like webpack and transformed using a compiler like Babel.
+- You need to do production optimizations such as code splitting.
+- You might want to statically pre-render some pages for performance and SEO. You might also want to use server-side rendering or client-side rendering.
+- You might have to write some server-side code to connect your React app to your data store.
 
-Hugo makes use of a variety of open source projects including:
+A framework can solve these problems. But such a framework must have the right level of abstraction — otherwise it won’t be very useful. It also needs to have great "Developer Experience", ensuring you and your team have an amazing experience while writing code.
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+## Next.js: The React Framework
+Enter Next.js, the React Framework. Next.js provides a solution to all of the above problems. But more importantly, it puts you and your team in the pit of success when building React applications.
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+Next.js aims to have best-in-class developer experience and many built-in features, such as:
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+- An intuitive [page-based](https://nextjs.org/docs/basic-features/pages) routing system (with support for [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes))
+- [Pre-rendering](https://nextjs.org/docs/basic-features/pages#pre-rendering), both [static generation (SSG)](https://nextjs.org/docs/basic-features/pages#static-generation-recommended) and [server-side rendering (SSR)](https://nextjs.org/docs/basic-features/pages#server-side-rendering) are supported on a per-page basis
+- Automatic code splitting for faster page loads
+- [Client-side routing](https://nextjs.org/docs/routing/introduction#linking-between-pages) with optimized prefetching
+- [Built-in CSS](https://nextjs.org/docs/basic-features/built-in-css-support) and [Sass](https://nextjs.org/docs/basic-features/built-in-css-support#sass-support) support, and support for any [CSS-in-JS](https://nextjs.org/docs/basic-features/built-in-css-support#css-in-js) library
+- Development environment with [Fast Refresh](https://nextjs.org/docs/basic-features/fast-refresh) support
+- [API routes](https://nextjs.org/docs/api-routes/introduction) to build API endpoints with Serverless Functions
+- Fully extendable
 
-Websites built with Hugo are extremely fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
+Next.js is used in tens of thousands of production-facing websites and web applications, including many of the world's largest brands.
 
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+- [Create a Next.js App | Learn Next.js](https://nextjs.org/learn/basics/create-nextjs-app)

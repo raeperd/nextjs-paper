@@ -16,7 +16,7 @@ series : ["Themes Guide"]
 aliases : ["migrate-from-jekyl"]
 ---
 
-This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
+This article offers a sample of basic Markdown syntax that can be used in NextJS-Paper content files, also it shows whether basic HTML elements are decorated with CSS in a `/public/app.css`
 <!--more-->
 
 ## Headings
@@ -54,7 +54,8 @@ The blockquote element represents content that is quoted from another source, op
 
 ## Tables
 
-Tables aren't part of the core Markdown spec, but Hugo supports supports them out-of-the-box.
+Tables aren't part of the core Markdown spec, but NextJS-paper supports supports them out-of-the-box.  
+This feature is supported by [remarkjs/remark-gfm](https://github.com/remarkjs/remark-gfm)
 
 | Name  | Age | 
 | ----- | --- |
@@ -84,34 +85,7 @@ Tables aren't part of the core Markdown spec, but Hugo supports supports them ou
 </html>
 ```
 
-#### Code block indented with four spaces
-
-    <!doctype html>
-    <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <title>Example HTML5 Document</title>
-    </head>
-    <body>
-      <p>Test</p>
-    </body>
-    </html>
-
-#### Code block with Hugo's internal highlight shortcode
-{{< highlight html >}}
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Example HTML5 Document</title>
-</head>
-<body>
-  <p>Test</p>
-</body>
-</html>
-{{< /highlight >}}
-
-## List Types
+This feature is supported by [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
 
 #### Ordered List
 

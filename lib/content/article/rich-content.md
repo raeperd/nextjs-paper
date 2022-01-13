@@ -1,18 +1,17 @@
 ---
-author : lee.so
 title : Rich Content
-date : 2019-03-10
-description : A brief description of Hugo Shortcodes
+date : 2021-01-13
 tags : [
-    "shortcodes",
-    "privacy",
+    "html", "javascript"
 ]
 ---
 
-Hugo ships with several [Built-in Shortcodes](https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes) for rich content, along with a [Privacy Config](https://gohugo.io/about/hugo-and-gdpr/) and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.
+You can use external resources using inline html.
+Which is, must be used with extra caution
+
 <!--more-->
 ---
 
-## YouTube Privacy Enhanced Shortcode
+## YouTube Privacy Enhanced Embedded Video
 
-{{< youtube ZJthWmvUzzc >}}
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Sklc_fQBmcs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
